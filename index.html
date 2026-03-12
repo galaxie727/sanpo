@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>チー散歩</title>
+
+<style>
+
+body{
+background:#000;
+color:#fff;
+font-family:sans-serif;
+text-align:center;
+margin:0;
+}
+
+#game{
+max-width:500px;
+margin:auto;
+padding:20px;
+}
+
+img{
+width:100%;
+border-radius:10px;
+}
+
+#text{
+font-size:20px;
+margin:20px 0;
+min-height:60px;
+}
+
+button{
+width:90%;
+padding:15px;
+margin:8px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:#fff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+<img id="girl" src="girl.png">
+
+<div id="text">
+こんにちは。
+チー散歩する？
+</div>
+
+<div id="choices">
+
+<button onclick="next(1)">する</button>
+<button onclick="next(2)">しない</button>
+
+</div>
+
+</div>
+
+<script>
+
+let scene=0
+
+function next(choice){
+
+if(scene==0){
+
+if(choice==1){
+
+document.getElementById("text").innerHTML="じゃあ少し歩こう"
+
+document.getElementById("choices").innerHTML=`
+<button onclick="next(3)">公園</button>
+<button onclick="next(4)">カフェ</button>
+`
+
+scene=1
+
+}
+
+if(choice==2){
+
+document.getElementById("text").innerHTML="そっか…またね"
+
+document.getElementById("choices").innerHTML=""
+
+}
+
+}
+
+else if(scene==1){
+
+if(choice==3){
+
+document.getElementById("text").innerHTML="公園いいね。静かだよ"
+
+}
+
+if(choice==4){
+
+document.getElementById("text").innerHTML="カフェ行こ。甘いの好き？"
+
+}
+
+document.getElementById("choices").innerHTML=`
+<button onclick="location.reload()">もう一回</button>
+`
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
